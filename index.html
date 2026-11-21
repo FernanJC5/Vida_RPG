@@ -1,0 +1,468 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VIDA RPG | Tu aventura comienza</title>
+
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+    <div class="app-container">
+
+        <!-- MENU LATERAL -->
+        <aside class="sidebar">
+
+            <div class="logo">
+                <span class="logo-icon">⚔</span>
+                <h2>VIDA <span>RPG</span></h2>
+            </div>
+
+            <div class="menu-title">MENÚ PRINCIPAL</div>
+
+            <nav class="menu">
+
+                <button class="menu-item active" data-section="dashboard">
+                    <span>⌂</span> Dashboard
+                </button>
+
+                <button class="menu-item" data-section="missions">
+                    <span>⚔</span> Misiones
+                </button>
+
+                <button class="menu-item" data-section="planner">
+                    <span>📅</span> Mi planificación
+                </button>
+
+                <button class="menu-item" data-section="statistics">
+                    <span>📊</span> Estadísticas
+                </button>
+
+                <button class="menu-item" data-section="achievements">
+                    <span>🏆</span> Logros
+                </button>
+
+                <button class="menu-item" data-section="inventory">
+                    <span>🎒</span> Inventario
+                </button>
+
+                <button class="menu-item" data-section="shop">
+                    <span>🛒</span> Tienda
+                </button>
+
+            </nav>
+
+            <div class="sidebar-bottom">
+                <div class="sidebar-player">
+                    <div class="avatar">F</div>
+                    <div>
+                        <strong>FernanJC</strong>
+                        <small>Jugador principal</small>
+                    </div>
+                </div>
+            </div>
+
+        </aside>
+
+
+        <!-- CONTENIDO PRINCIPAL -->
+        <main class="main-content">
+
+            <header class="topbar">
+                <div>
+                    <p class="welcome">BIENVENIDO DE NUEVO</p>
+                    <h1>Tu aventura continúa, <span>FernanJC</span></h1>
+                </div>
+
+                <div class="topbar-right">
+                    <div class="gold-display">
+                        🪙 <span id="gold">100</span>
+                    </div>
+                    <div class="date-display" id="currentDate"></div>
+                </div>
+            </header>
+
+
+            <!-- DASHBOARD -->
+            <section id="dashboard" class="page-section active">
+
+                <div class="section-heading">
+                    <div>
+                        <h2>Panel de aventurero</h2>
+                        <p>Observa tu progreso y continúa mejorando.</p>
+                    </div>
+                    <span class="status-badge">● EN AVENTURA</span>
+                </div>
+
+
+                <!-- PERFIL -->
+                <div class="hero-card">
+
+                    <div class="character-avatar">
+                        <span>⚔</span>
+                    </div>
+
+                    <div class="character-info">
+
+                        <span class="character-label">TU PERSONAJE</span>
+
+                        <h2>FernanJC</h2>
+
+                        <p>Clase: Aventurero</p>
+
+                        <div class="level-info">
+                            <strong id="level">Nivel 1</strong>
+                            <span id="xpText">0 / 100 XP</span>
+                        </div>
+
+                        <div class="xp-bar">
+                            <div id="xpProgress" class="xp-progress"></div>
+                        </div>
+
+                    </div>
+
+                    <div class="hero-level">
+                        <span>NIVEL</span>
+                        <strong id="heroLevel">01</strong>
+                    </div>
+
+                </div>
+
+
+                <!-- ESTADÍSTICAS -->
+                <div class="stats-grid">
+
+                    <div class="stat-card">
+                        <div class="stat-icon purple">⚡</div>
+                        <span>Experiencia total</span>
+                        <h2 id="totalXP">0 XP</h2>
+                        <small>Experiencia acumulada</small>
+                    </div>
+
+                    <div class="stat-card">
+                        <div class="stat-icon blue">⚔</div>
+                        <span>Fuerza</span>
+                        <h2 id="strength">5</h2>
+                        <small>Tu capacidad física</small>
+                    </div>
+
+                    <div class="stat-card">
+                        <div class="stat-icon green">🧠</div>
+                        <span>Inteligencia</span>
+                        <h2 id="intelligence">5</h2>
+                        <small>Tu conocimiento</small>
+                    </div>
+
+                    <div class="stat-card">
+                        <div class="stat-icon orange">🔥</div>
+                        <span>Disciplina</span>
+                        <h2 id="discipline">5</h2>
+                        <small>Tu constancia</small>
+                    </div>
+
+                </div>
+
+
+                <!-- MISIONES Y PROGRESO -->
+                <div class="dashboard-grid">
+
+                    <div class="panel">
+
+                        <div class="panel-header">
+                            <div>
+                                <h3>Misiones disponibles</h3>
+                                <p>Completa tus objetivos diarios.</p>
+                            </div>
+
+                            <button class="text-button" data-go="missions">
+                                Ver todas →
+                            </button>
+                        </div>
+
+                        <div id="dashboardMissions" class="mission-list"></div>
+
+                    </div>
+
+
+                    <div class="panel">
+
+                        <div class="panel-header">
+                            <div>
+                                <h3>Tu progreso</h3>
+                                <p>Resumen de tu aventura.</p>
+                            </div>
+                        </div>
+
+                        <div class="progress-item">
+                            <span>Misiones completadas</span>
+                            <strong id="completedMissions">0</strong>
+                        </div>
+
+                        <div class="progress-item">
+                            <span>Logros desbloqueados</span>
+                            <strong id="unlockedAchievements">0</strong>
+                        </div>
+
+                        <div class="progress-item">
+                            <span>Objetos obtenidos</span>
+                            <strong id="itemsCount">0</strong>
+                        </div>
+
+                        <div class="quote-box">
+                            "Cada pequeño esfuerzo te acerca a tu mejor versión."
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+
+<!-- MI PLANIFICACIÓN -->
+<section id="planner" class="page-section">
+
+    <div class="section-heading">
+        <div>
+            <h2>Mi planificación</h2>
+            <p>Organiza tu día y convierte tus actividades en misiones.</p>
+        </div>
+    </div>
+
+    <!-- FORMULARIO PARA CREAR ACTIVIDADES -->
+    <div class="panel planner-form">
+
+        <div class="panel-header">
+            <div>
+                <h3>➕ Nueva actividad</h3>
+                <p>Agrega tus propios objetivos diarios.</p>
+            </div>
+        </div>
+
+        <form id="activityForm">
+
+            <div class="form-grid">
+
+                <div class="form-group">
+                    <label for="activityTitle">Nombre de la actividad</label>
+                    <input type="text" id="activityTitle"
+                           placeholder="Ej. Estudiar programación"
+                           required>
+                </div>
+
+                <div class="form-group">
+                    <label for="activityDate">Fecha</label>
+                    <input type="date" id="activityDate" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="activityTime">Hora</label>
+                    <input type="time" id="activityTime">
+                </div>
+
+                <div class="form-group">
+                    <label for="activityDuration">Duración (minutos)</label>
+                    <input type="number" id="activityDuration"
+                           min="1" placeholder="Ej. 60">
+                </div>
+
+                <div class="form-group">
+                    <label for="activityDifficulty">Dificultad</label>
+                    <select id="activityDifficulty">
+                        <option value="easy">Fácil</option>
+                        <option value="medium" selected>Media</option>
+                        <option value="hard">Difícil</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="activityRecurrence">Repetición</label>
+                    <select id="activityRecurrence">
+                        <option value="none">No se repite</option>
+                        <option value="daily">Todos los días</option>
+                        <option value="weekly">Cada semana</option>
+                        <option value="weekdays">De lunes a viernes</option>
+                    </select>
+                </div>
+
+            </div>
+
+            <button type="submit" class="primary-button">
+                Crear actividad
+            </button>
+
+        </form>
+    </div>
+
+    <!-- CALENDARIO SEMANAL -->
+    <div class="panel planner-calendar">
+
+        <div class="panel-header">
+            <div>
+                <h3>📅 Calendario semanal</h3>
+                <p>Visualiza cómo organizas tu semana.</p>
+            </div>
+        </div>
+
+        <div id="weeklyCalendar" class="weekly-calendar">
+            <!-- JavaScript generará los días -->
+        </div>
+
+    </div>
+
+    <!-- ACTIVIDADES DEL DÍA -->
+    <div class="panel">
+
+        <div class="panel-header">
+            <div>
+                <h3>🎯 Actividades del día</h3>
+                <p id="selectedDateText">Tus objetivos programados.</p>
+            </div>
+        </div>
+
+        <div id="dailyActivities" class="mission-list">
+            <p>Aún no tienes actividades para este día.</p>
+        </div>
+
+    </div>
+
+</section>
+
+            <!-- MISIONES -->
+            <section id="missions" class="page-section">
+
+                <div class="section-heading">
+                    <div>
+                        <h2>Misiones</h2>
+                        <p>Completa desafíos y gana experiencia.</p>
+                    </div>
+                </div>
+
+                <div class="panel">
+                    <div class="panel-header">
+                        <div>
+                            <h3>Lista de misiones</h3>
+                            <p>Selecciona una misión para reclamar tu recompensa.</p>
+                        </div>
+                    </div>
+
+                    <div id="allMissions" class="mission-list"></div>
+                </div>
+
+            </section>
+
+
+            <!-- ESTADÍSTICAS -->
+            <section id="statistics" class="page-section">
+
+                <div class="section-heading">
+                    <div>
+                        <h2>Estadísticas</h2>
+                        <p>Observa cómo evoluciona tu personaje.</p>
+                    </div>
+                </div>
+
+                <div class="stats-grid">
+
+                    <div class="stat-card">
+                        <div class="stat-icon purple">⚡</div>
+                        <span>Experiencia</span>
+                        <h2 id="statsXP">0</h2>
+                        <small>XP acumulada</small>
+                    </div>
+
+                    <div class="stat-card">
+                        <div class="stat-icon blue">⚔</div>
+                        <span>Fuerza</span>
+                        <h2 id="statsStrength">5</h2>
+                        <small>Atributo del personaje</small>
+                    </div>
+
+                    <div class="stat-card">
+                        <div class="stat-icon green">🧠</div>
+                        <span>Inteligencia</span>
+                        <h2 id="statsIntelligence">5</h2>
+                        <small>Atributo del personaje</small>
+                    </div>
+
+                    <div class="stat-card">
+                        <div class="stat-icon orange">🔥</div>
+                        <span>Disciplina</span>
+                        <h2 id="statsDiscipline">5</h2>
+                        <small>Atributo del personaje</small>
+                    </div>
+
+                </div>
+
+                <div class="panel">
+                    <h3>Resumen del aventurero</h3>
+                    <p id="statsSummary">Tu aventura apenas comienza.</p>
+                </div>
+
+            </section>
+
+
+            <!-- LOGROS -->
+            <section id="achievements" class="page-section">
+
+                <div class="section-heading">
+                    <div>
+                        <h2>Logros</h2>
+                        <p>Desbloquea reconocimientos especiales.</p>
+                    </div>
+                </div>
+
+                <div id="achievementList" class="achievement-grid"></div>
+
+            </section>
+
+
+            <!-- INVENTARIO -->
+            <section id="inventory" class="page-section">
+
+                <div class="section-heading">
+                    <div>
+                        <h2>Inventario</h2>
+                        <p>Todos los objetos que has conseguido.</p>
+                    </div>
+                </div>
+
+                <div id="inventoryList" class="inventory-grid"></div>
+
+            </section>
+
+
+            <!-- TIENDA -->
+            <section id="shop" class="page-section">
+
+                <div class="section-heading">
+                    <div>
+                        <h2>Tienda del aventurero</h2>
+                        <p>Canjea tus monedas por recompensas.</p>
+                    </div>
+
+                    <div class="gold-display">
+                        🪙 <span id="shopGold">100</span>
+                    </div>
+                </div>
+
+                <div id="shopList" class="shop-grid"></div>
+
+            </section>
+
+            <footer>
+                VIDA RPG © 2026 | Tu vida, tu aventura.
+            </footer>
+
+        </main>
+
+    </div>
+
+    <script src="js/script.js"></script>
+
+</body>
+</html>
